@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 
-#file_path = "soil_weather_crop_data.csv"
+#file_path = "soil_weather_crop_data.csv" add a huge csv dataset if you want
 
 try:
     df = pd.read_csv(file_path)
@@ -20,7 +20,6 @@ numeric_columns = ['soil_ph', 'rainfall', 'temperature', 'humidity']
 
 X_numeric = df[numeric_columns]
 
-# Normalize the features
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X_numeric)
 
@@ -38,7 +37,7 @@ y = np.select(conditions, choices, default=0)
 # Split the data
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
 
-# Step 4: Build and train the model
+#Build and train the model
 model = tf.keras.Sequential([
     tf.keras.layers.Dense(64, activation='relu', input_shape=(X_train.shape[1],)),
     tf.keras.layers.Dense(64, activation='relu'),
